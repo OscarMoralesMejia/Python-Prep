@@ -1,6 +1,11 @@
 class Funciones:
+    
     def __init__(self,lista_num):
-        self.lista=lista_num
+        if type(lista_num)!=list:
+            self.lista = []
+            raise ValueError("Se ha creado una lista vacia, se esperaba una lista de números enteros")
+        else:
+            self.lista = lista_num
         
         
     def __esprimo(self,num):
@@ -17,11 +22,16 @@ class Funciones:
         '''
         Funcion para detectar los números primos
         '''
+        lista_primos=[]
         for item in self.lista:
-            if self.__esprimo(item)==True:
-                 print('El elemento', item, 'SI es un numero primo')
-            else:
-                print('El elemento', item, 'NO es un numero primo')       
+            for i in self.lista:
+                if self.__esprimo(i):#==True:
+                    lista_primos.append(True)
+                 #print('El elemento', item, 'SI es un numero primo')
+                else:
+                    lista_primos.append(False)
+                #print('El elemento', item, 'NO es un numero primo')
+        return lista_primos       
 
     def masrepite(self):
         i=0
@@ -85,8 +95,12 @@ class Funciones:
             print("opción no reconocida")
         return resultado
     def factorial(self):
+        lista_factorial=[]
         for i in self.lista:
-            print("El factorial de ",i,"es",self.__factorial(i))
+            lista_factorial.append(self.__factorial(i))
+        return lista_factorial
+            #print("El factorial de ",i,"es",self.__factorial(i))
+    
     def __factorial(self,numero):
         if numero>0 and type(numero)==int:
             if numero<=1:
